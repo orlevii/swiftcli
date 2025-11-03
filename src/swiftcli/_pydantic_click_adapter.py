@@ -32,7 +32,7 @@ class PydanticClickAdapter:
         )
         metadata = self.field_info.metadata[0]
 
-        if not isinstance(metadata, (OptionSettings, ArgumentSettings)):
+        if not isinstance(metadata, OptionSettings | ArgumentSettings):
             raise RuntimeError(f"Unsupported metadata type: {type(metadata)}")
         return metadata
 

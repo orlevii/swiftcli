@@ -7,7 +7,6 @@ from typing import (
     Any,
     Generic,
     TypedDict,
-    cast,
 )
 
 import click
