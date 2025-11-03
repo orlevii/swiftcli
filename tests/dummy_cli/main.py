@@ -4,6 +4,7 @@ import click
 
 from swiftcli import Group
 from tests.dummy_cli.commands.greet import GreetCommand
+from tests.dummy_cli.commands.copy import CopyCommand
 
 
 def print_version(ctx: click.Context, _: Any, value: bool) -> None:
@@ -25,6 +26,7 @@ cli = Group(
     ]
 )
 cli.add_command_cls(GreetCommand)
+cli.add_command_cls(CopyCommand)
 
 if __name__ == "__main__":
     cli()

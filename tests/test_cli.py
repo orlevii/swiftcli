@@ -2,7 +2,7 @@ import itertools
 
 import pytest
 
-from tests.utils import run_cli
+from tests.utils import RunCmdError, run_cli
 
 
 def test_cli_help() -> None:
@@ -11,7 +11,7 @@ def test_cli_help() -> None:
 
 
 def test_required_option() -> None:
-    with pytest.raises(RuntimeError) as e:
+    with pytest.raises(RunCmdError) as e:
         run_cli("greet")
         assert "Missing option '--name'" in str(e.value)
 
@@ -38,3 +38,9 @@ def test_verbose(count: int) -> None:
 
     num_of_lines = stderr.strip().split("\n")
     assert len(num_of_lines) == count
+
+
+def test_command_with_arg_validation() -> None:
+    with pytest.raises(RunCmdError) as e:
+        run_cli("copy")
+    assert "Error: Missing argument" in e.value.stderr, e.value.stderr

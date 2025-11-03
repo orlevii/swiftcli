@@ -4,6 +4,17 @@ import subprocess
 from typing import Literal, overload
 
 
+class RunCmdError(RuntimeError):
+    def __init__(self, cmd: str, stdout: str, stderr: str, *args: object) -> None:
+        super().__init__(*args)
+        self.cmd = cmd
+        self.stdout = stdout
+        self.stderr = stderr
+
+    def __repr__(self) -> str:
+        return f"Command failed: {self.cmd!r}\n{self.stderr}"
+
+
 def run_cmd(cmd: str) -> tuple[str, str]:
     p = subprocess.Popen(
         cmd,
@@ -14,7 +25,7 @@ def run_cmd(cmd: str) -> tuple[str, str]:
     )
     out, err = p.communicate()
     if p.returncode != 0:
-        raise RuntimeError(f"Command failed: {cmd!r}\n{err}")
+        raise RunCmdError(cmd=cmd, stdout=out, stderr=err)
     return out, err
 
 
