@@ -3,6 +3,7 @@ from typing import Any
 import click
 
 from swiftcli import Group
+from tests.dummy_cli.commands.copy import CopyCommand
 from tests.dummy_cli.commands.greet import GreetCommand
 
 
@@ -25,6 +26,7 @@ cli = Group(
     ]
 )
 cli.add_command_cls(GreetCommand)
+cli.add_command_cls(CopyCommand)
 
 if __name__ == "__main__":
     cli()

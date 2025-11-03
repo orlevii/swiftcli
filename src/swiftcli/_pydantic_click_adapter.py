@@ -9,6 +9,11 @@ from pydantic_core import PydanticUndefined
 
 from .types import ArgumentSettings, OptionSettings
 
+try:
+    from click.core import UNSET  # type: ignore[attr-defined]
+except ImportError:
+    UNSET = None  # type: ignore[assignment]
+
 if TYPE_CHECKING:
     from pydantic.fields import FieldInfo
 
@@ -22,12 +27,12 @@ class PydanticClickAdapter:
 
     @cached_property
     def metadata(self) -> OptionSettings | ArgumentSettings:
-        assert len(
-            self.field_info.metadata
-        ), f"No metadata found for field {self.field_name}"
+        assert len(self.field_info.metadata), (
+            f"No metadata found for field {self.field_name}"
+        )
         metadata = self.field_info.metadata[0]
 
-        if not isinstance(metadata, (OptionSettings, ArgumentSettings)):
+        if not isinstance(metadata, OptionSettings | ArgumentSettings):
             raise RuntimeError(f"Unsupported metadata type: {type(metadata)}")
         return metadata
 
@@ -40,7 +45,7 @@ class PydanticClickAdapter:
         param_decls = self._get_default_param_decls()
         param_cls = self.metadata.cls_type
 
-        param_kwargs = cast(StrDict, self.metadata.kwargs.copy())
+        param_kwargs = cast("StrDict", self.metadata.kwargs.copy())
         param_kwargs.pop("param_decls", None)
         param_kwargs["required"] = self.field_info.default == PydanticUndefined
         param_kwargs["default"] = self._get_field_default_value()
@@ -70,7 +75,7 @@ class PydanticClickAdapter:
     def _get_field_default_value(self) -> Any:
         default = self.field_info.default
         if default == PydanticUndefined:
-            return None
+            return UNSET
         if isinstance(default, Enum):
             return default.value
         return default
@@ -99,7 +104,7 @@ class PydanticClickAdapter:
 
     def _create_switch_params(self, param_kwargs: StrDict) -> list[click.Parameter]:
         param_cls = self.metadata.cls_type
-        enum_values = list(cast(type[Enum], self.field_type))
+        enum_values = list(cast("type[Enum]", self.field_type))
 
         param_kwargs = {
             k: v

@@ -6,9 +6,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Generic,
-    Optional,
     TypedDict,
-    cast,
 )
 
 import click
@@ -59,9 +57,7 @@ class BaseCommand(Generic[ParamsType]):
             cmd = cls(**kwargs)
             return cmd.run()
 
-        config = cast(dict[str, Any], cls.CONFIG.copy())
-        help_ = cast(Optional[str], config.pop("help", None))
-        params_schema_cls = cast(BaseModel, cls.__get_parameters_type())
+        params_schema_cls = cls.__get_parameters_type()
         model_fields: dict[str, FieldInfo] = params_schema_cls.model_fields
 
         parameters: list[click.Parameter] = []
@@ -69,9 +65,10 @@ class BaseCommand(Generic[ParamsType]):
             params = PydanticClickAdapter(name, field_info).to_click_params()
             parameters.extend(params)
 
+        config = cls.CONFIG.copy()
+        config["help"] = strip_indent(config.get("help"))
+        config["name"] = config.get("name", cls.NAME)
         return cls.COMMAND_CLS(
-            name=cls.NAME,
-            help=strip_indent(help_),
             params=parameters,
             callback=callback_fn,
             **config,
