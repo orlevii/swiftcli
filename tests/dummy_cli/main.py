@@ -3,8 +3,8 @@ from typing import Any
 import click
 
 from swiftcli import Group
-from tests.dummy_cli.commands.greet import GreetCommand
 from tests.dummy_cli.commands.copy import CopyCommand
+from tests.dummy_cli.commands.greet import GreetCommand
 
 
 def print_version(ctx: click.Context, _: Any, value: bool) -> None:

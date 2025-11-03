@@ -59,8 +59,8 @@ class BaseCommand(Generic[ParamsType]):
             cmd = cls(**kwargs)
             return cmd.run()
 
-        config = cast(dict[str, Any], cls.CONFIG.copy())
-        help_ = cast(Optional[str], config.pop("help", None))
+        config = cast("dict[str, Any]", cls.CONFIG.copy())
+        help_ = cast("Optional[str]", config.pop("help", None))
         params_schema_cls = cls.__get_parameters_type()
         model_fields: dict[str, FieldInfo] = params_schema_cls.model_fields
 

@@ -1,8 +1,5 @@
-from typing import Annotated
-
 from swiftcli import BaseCommand
-from swiftcli.types import Argument, Option, OptionSettings
-from tests.dummy_cli.logger import logger
+from swiftcli.types import Argument
 
 from .common_params import CommonParams
 
