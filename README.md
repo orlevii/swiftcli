@@ -74,13 +74,17 @@ Enum-based switches that create multiple mutually exclusive flags:
 ```python
 from enum import Enum
 
+
 class LogLevel(str, Enum):
     DEBUG = "debug"
-    INFO = "info" 
+    INFO = "info"
     ERROR = "error"
 
+
 class MyParams(BaseModel):
-    log_level: Switch[LogLevel] = LogLevel.INFO  # Creates --debug, --info, --error flags
+    log_level: Switch[LogLevel] = (
+        LogLevel.INFO
+    )  # Creates --debug, --info, --error flags
 ```
 
 ## Advanced Usage
@@ -107,14 +111,15 @@ Options can be customized using OptionSettings:
 from typing import Annotated
 from clantic.types import OptionSettings
 
+
 class MyParams(BaseModel):
     verbose: Annotated[
         int,
         OptionSettings(
             count=True,  # Allow multiple flags (-vvv)
             aliases=["-v"],  # Add short alias
-            help="Sets the verbosity level"
-        )
+            help="Sets the verbosity level",
+        ),
     ] = 0
 ```
 
@@ -138,6 +143,7 @@ SwiftCLI makes it easy to test your CLI applications:
 ```python
 # Import the command we want to test
 from my_cli.commands import MyCommand
+
 
 # Test the command
 def test_my_command():

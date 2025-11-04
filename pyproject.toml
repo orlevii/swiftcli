@@ -30,7 +30,7 @@ format = "ruff format src tests"
 test = "pytest -v"
 mypy = "mypy -p clantic -p tests"
 
-"docs:foramt" = "doccmd --language=python --no-pad-file --command='ruff format' docs"
+"doccmd" = "doccmd --language=python --no-pad-file --command='ruff format'"
 
 # docs
 "docs:build".shell = "cd docs && mkdocs build"

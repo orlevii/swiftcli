@@ -18,9 +18,11 @@ from pydantic import BaseModel
 from clantic import BaseCommand, Group
 from clantic.types import Argument, Option
 
+
 class GreetParams(BaseModel):
     name: Argument[str]  # required argument
     color: Option[str] = ""  # Optional --color option with default value
+
 
 class GreetCommand(BaseCommand[GreetParams]):
     NAME = "greet"
@@ -30,6 +32,7 @@ class GreetCommand(BaseCommand[GreetParams]):
             print(f"Hello, {self.params.name}. You like the color {self.params.color}.")
         else:
             print(f"Hello, {self.params.name}.")
+
 
 cli = Group()
 cli.add_command_cls(GreetCommand)

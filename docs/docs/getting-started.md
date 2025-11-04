@@ -18,6 +18,7 @@ First, define your command parameters using a Pydantic model:
 from pydantic import BaseModel
 from clantic.types import Argument, Option
 
+
 class GreetParams(BaseModel):
     name: Argument[str]  # required argument
     greeting: Option[str] = "Hello"  # optional with default
@@ -30,12 +31,14 @@ Create a command by inheriting from `BaseCommand`:
 ```python
 from clantic import BaseCommand
 
+
 class GreetCommand(BaseCommand[GreetParams]):
     NAME = "greet"
-    
+
     def run(self) -> None:
         print(f"{self.params.greeting}, {self.params.name}!")
 ```
+
 
 ### 3. Create CLI Group
 
@@ -64,4 +67,4 @@ Hi, Alice!
 
 - Learn about different [Parameter Types](user-guide/parameter-types.md)
 - Explore [Command Configuration](user-guide/command-configuration.md)
-- See how to [Test Your CLI](user-guide/testing.md) 
+- See how to [Test Your CLI](user-guide/testing.md)
