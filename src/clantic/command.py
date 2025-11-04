@@ -13,8 +13,8 @@ import click
 from pydantic import BaseModel, ValidationError
 from typing_extensions import NotRequired, TypeVar
 
-from swiftcli._pydantic_click_adapter import PydanticClickAdapter
-from swiftcli.utils import strip_indent
+from clantic._pydantic_click_adapter import PydanticClickAdapter
+from clantic.utils import strip_indent
 
 if TYPE_CHECKING:
     from collections.abc import MutableMapping

@@ -1,6 +1,6 @@
 # Parameter Types
 
-SwiftCLI supports several parameter types through the `swiftcli.types` module.
+Clantic supports several parameter types through the `clantic.types` module.
 
 ## Arguments
 
@@ -8,7 +8,7 @@ Arguments are required positional parameters:
 
 ```python
 from pydantic import BaseModel
-from swiftcli.types import Argument
+from clantic.types import Argument
 
 class MyParams(BaseModel):
     filename: Argument[str]  # Required positional argument

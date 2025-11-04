@@ -1,7 +1,7 @@
 from typing import Annotated
 
-from swiftcli import BaseCommand
-from swiftcli.types import Option, OptionSettings
+from clantic import BaseCommand
+from clantic.types import Option, OptionSettings
 from tests.dummy_cli.logger import logger
 
 from .common_params import CommonParams

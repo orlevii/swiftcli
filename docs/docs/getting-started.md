@@ -2,10 +2,10 @@
 
 ## Installation
 
-Install SwiftCLI using pip:
+Install Clantic using pip:
 
 ```bash
-pip install swiftcli
+pip install clantic
 ```
 
 ## Basic Usage
@@ -16,7 +16,7 @@ First, define your command parameters using a Pydantic model:
 
 ```python
 from pydantic import BaseModel
-from swiftcli.types import Argument, Option
+from clantic.types import Argument, Option
 
 class GreetParams(BaseModel):
     name: Argument[str]  # required argument
@@ -28,7 +28,7 @@ class GreetParams(BaseModel):
 Create a command by inheriting from `BaseCommand`:
 
 ```python
-from swiftcli import BaseCommand
+from clantic import BaseCommand
 
 class GreetCommand(BaseCommand[GreetParams]):
     NAME = "greet"
@@ -42,7 +42,7 @@ class GreetCommand(BaseCommand[GreetParams]):
 Group your commands and create the CLI:
 
 ```python
-from swiftcli import Group
+from clantic import Group
 
 cli = Group()
 cli.add_command_cls(GreetCommand)

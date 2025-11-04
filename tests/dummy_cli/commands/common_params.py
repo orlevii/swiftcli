@@ -3,7 +3,7 @@ from typing import Annotated, Any
 import click
 from pydantic import BaseModel
 
-from swiftcli.types import OptionSettings
+from clantic.types import OptionSettings
 from tests.dummy_cli.logger import logger
 
 

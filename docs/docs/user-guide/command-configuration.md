@@ -32,7 +32,7 @@ class MyCommand(BaseCommand[MyParams]):
 Group multiple commands together:
 
 ```python
-from swiftcli import Group
+from clantic import Group
 
 cli = Group()
 cli.add_command_cls(CommandOne)

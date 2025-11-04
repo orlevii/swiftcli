@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Any
 import click
 
 if TYPE_CHECKING:
-    from swiftcli.command import BaseCommand
+    from clantic.command import BaseCommand
 
 
 class Group(click.Group):

@@ -665,6 +665,21 @@ traitlets = "*"
 test = ["flake8", "nbdime", "nbval", "notebook", "pytest"]
 
 [[package]]
+name = "mdformat-ruff"
+version = "0.1.3"
+description = "Mdformat plugin to ruffen Python code blocks"
+optional = false
+python-versions = ">=3.7,<4.0"
+groups = ["dev"]
+files = [
+    {file = "mdformat_ruff-0.1.3-py3-none-any.whl", hash = "sha256:9c0cf7bfe6bf99b9e0e617e960041d06e9fa84300d5645f922306dd2ed0d1296"},
+    {file = "mdformat_ruff-0.1.3.tar.gz", hash = "sha256:2ddd2758dd3f6738c1c7bfbeb89320d271454f4cd8c28a99968a50d3578b15d6"},
+]
+
+[package.dependencies]
+ruff = "*"
+
+[[package]]
 name = "mergedeep"
 version = "1.3.4"
 description = "A deep merge function for 🐍."
@@ -1626,4 +1641,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "1cc42a731e9905e982ba72e5a51f7614744bd211265bd7a596baae74aca07a85"
+content-hash = "98f26a19e8802f7e4a1382304f5c37edb49bbc697673d4c9982c4285e9d6e61b"

@@ -1,5 +1,5 @@
-from swiftcli import BaseCommand
-from swiftcli.types import Argument
+from clantic import BaseCommand
+from clantic.types import Argument
 
 from .common_params import CommonParams
 

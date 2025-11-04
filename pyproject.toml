@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "swiftcli"
+name = "clantic"
 version = "0.2.0"
 description = "Build testable CLI apps with `click` and `pydantic`"
 authors = ["Or Levi <orlevi128@gmail.com>"]
@@ -17,6 +17,7 @@ pytest = "^8.4.2"
 pytest-cov = "^7.0.0"
 mypy = "^1.18.2"
 ipdb = "^0.13.13"
+mdformat-ruff = "^0.1.3"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.1"
@@ -27,7 +28,7 @@ mkdocs-awesome-pages-plugin = "^2.10.1"
 lint = "ruff check src tests"
 format = "ruff format src tests"
 test = "pytest -v"
-mypy = "mypy -p swiftcli -p tests"
+mypy = "mypy -p clantic -p tests"
 
 # docs
 "docs:build".shell = "cd docs && mkdocs build"
