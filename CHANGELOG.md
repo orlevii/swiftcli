@@ -7,12 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.2.0] - 2025-11-03
 ### Changed
+- Package renamed from `swiftcli` to `clantic`
 - Dropped Python 3.9 support
 - Support for default values in Argument parameters (introduced at click==8.3.0)
 
 ## [0.1.0] - 2025-01-03
 ### Added
-- Initial release of SwiftCLI
+- Initial release of Clantic
 - Core command system using Pydantic models for parameter definition
 - Support for Arguments, Options, Flags and Switches parameter types
 - Command configuration system with help text and other settings

@@ -1,7 +1,7 @@
-# SwiftCLI
+# Clantic
 Build testable CLI apps with `click` and `pydantic`
 
-`swiftcli` makes it easy to define CLI parameters with `pydantic` BaseModels, combining the power of `click` with `pydantic`'s data validation.
+`clantic` makes it easy to define CLI parameters with `pydantic` BaseModels, combining the power of `click` with `pydantic`'s data validation.
 
 ## Features
 - Define CLI parameters using pydantic models
@@ -11,15 +11,15 @@ Build testable CLI apps with `click` and `pydantic`
 
 ## Installation
 ```bash
-pip install swiftcli
+pip install clantic
 ```
 
 ## Simple Example
 ```python
 from pydantic import BaseModel
 
-from swiftcli import BaseCommand, Group
-from swiftcli.types import Argument, Option
+from clantic import BaseCommand, Group
+from clantic.types import Argument, Option
 
 
 class GreetParams(BaseModel):
@@ -45,7 +45,7 @@ if __name__ == "__main__":
 ```
 
 ## Parameter Types
-SwiftCLI provides several parameter types through the `swiftcli.types` module:
+Clantic provides several parameter types through the `clantic.types` module:
 
 ### Argument
 Required positional arguments:
@@ -74,13 +74,17 @@ Enum-based switches that create multiple mutually exclusive flags:
 ```python
 from enum import Enum
 
+
 class LogLevel(str, Enum):
     DEBUG = "debug"
-    INFO = "info" 
+    INFO = "info"
     ERROR = "error"
 
+
 class MyParams(BaseModel):
-    log_level: Switch[LogLevel] = LogLevel.INFO  # Creates --debug, --info, --error flags
+    log_level: Switch[LogLevel] = (
+        LogLevel.INFO
+    )  # Creates --debug, --info, --error flags
 ```
 
 ## Advanced Usage
@@ -105,7 +109,8 @@ Options can be customized using OptionSettings:
 
 ```python
 from typing import Annotated
-from swiftcli.types import OptionSettings
+from clantic.types import OptionSettings
+
 
 class MyParams(BaseModel):
     verbose: Annotated[
@@ -113,8 +118,8 @@ class MyParams(BaseModel):
         OptionSettings(
             count=True,  # Allow multiple flags (-vvv)
             aliases=["-v"],  # Add short alias
-            help="Sets the verbosity level"
-        )
+            help="Sets the verbosity level",
+        ),
     ] = 0
 ```
 
@@ -122,7 +127,7 @@ class MyParams(BaseModel):
 Group multiple commands together:
 
 ```python
-from swiftcli import Group
+from clantic import Group
 
 cli = Group()
 cli.add_command_cls(CommandOne)
@@ -133,11 +138,12 @@ if __name__ == "__main__":
 ```
 
 ## Testing
-SwiftCLI makes it easy to test your CLI applications:
+Clantic makes it easy to test your CLI applications:
 
 ```python
 # Import the command we want to test
 from my_cli.commands import MyCommand
+
 
 # Test the command
 def test_my_command():

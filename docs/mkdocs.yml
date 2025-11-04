@@ -1,6 +1,6 @@
-site_name: SwiftCLI
+site_name: Clantic
 site_description: Build testable CLI apps with click and pydantic
-repo_url: https://github.com/orlevii/swiftcli
+repo_url: https://github.com/orlevii/clantic
 theme:
   name: material
   features:
@@ -11,15 +11,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: deep orange
+      primary: blue
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)" 
       scheme: slate
-      primary: deep purple
-      accent: deep orange
+      primary: blue grey
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode

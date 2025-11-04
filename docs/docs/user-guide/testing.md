@@ -1,6 +1,6 @@
 # Testing
 
-SwiftCLI makes it easy to test your CLI applications by allowing direct instantiation and execution of commands.
+Clantic makes it easy to test your CLI applications by allowing direct instantiation and execution of commands.
 
 ## Basic Testing
 
@@ -14,12 +14,9 @@ Example using pytest for testing a CLI command:
 import pytest
 from my_cli.commands import GreetCommand
 
-def test_greet_command(capsys):
+
+def test_greet_command():
     # Create and run command
     cmd = GreetCommand(name="Alice")
     cmd.run()
-    
-    # Check output
-    captured = capsys.readouterr()
-    assert "Hi, Alice!" in captured.out
 ```

@@ -7,7 +7,7 @@ import click
 from typing_extensions import TypeVar, Unpack
 
 if TYPE_CHECKING:
-    from swiftcli._click_types import ClickArgumentFields, ClickOptionFields
+    from clantic._click_types import ClickArgumentFields, ClickOptionFields
 
 __all__ = [
     "Argument",
