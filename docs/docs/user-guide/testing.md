@@ -1,6 +1,6 @@
 # Testing
 
-SwiftCLI makes it easy to test your CLI applications by allowing direct instantiation and execution of commands.
+Clantic makes it easy to test your CLI applications by allowing direct instantiation and execution of commands.
 
 ## Basic Testing
 

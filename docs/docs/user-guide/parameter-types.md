@@ -20,7 +20,7 @@ class MyParams(BaseModel):
 Options are named parameters that can have default values:
 
 ```python
-from swiftcli.types import Option
+from clantic.types import Option
 
 
 class MyParams(BaseModel):
@@ -33,7 +33,7 @@ class MyParams(BaseModel):
 Flags are boolean options that can be enabled:
 
 ```python
-from swiftcli.types import Flag
+from clantic.types import Flag
 
 
 class MyParams(BaseModel):
@@ -46,7 +46,7 @@ Switches create multiple mutually exclusive flags from an Enum:
 
 ```python
 from enum import Enum
-from swiftcli.types import Switch
+from clantic.types import Switch
 
 
 class LogLevel(str, Enum):
@@ -67,7 +67,7 @@ Options and Arguments can be customized using `OptionSettings`/`ArgumentsSetting
 
 ```python
 from typing import Annotated
-from swiftcli.types import OptionSettings
+from clantic.types import OptionSettings
 
 
 class MyParams(BaseModel):

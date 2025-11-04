@@ -138,7 +138,7 @@ if __name__ == "__main__":
 ```
 
 ## Testing
-SwiftCLI makes it easy to test your CLI applications:
+Clantic makes it easy to test your CLI applications:
 
 ```python
 # Import the command we want to test
